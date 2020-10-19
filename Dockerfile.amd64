@@ -1,0 +1,9 @@
+FROM alpine:latest
+
+RUN apk --no-cache add bash vsftpd
+
+COPY entrypoint.sh /bin/entrypoint.sh
+
+EXPOSE 21
+
+ENTRYPOINT ["/bin/entrypoint.sh"]

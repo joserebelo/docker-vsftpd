@@ -1,0 +1,16 @@
+image: josereb/vsftpd:latest
+manifests:
+  - image: josereb/vsftpd:amd64
+    platform:
+      architecture: amd64
+      os: linux
+  - image: josereb/vsftpd:arm64v8
+    platform:
+      architecture: arm64
+      os: linux
+      variant: v8
+  - image: josereb/vsftpd:arm32v7
+    platform:
+      architecture: arm
+      os: linux
+      variant: v7

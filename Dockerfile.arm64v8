@@ -1,0 +1,16 @@
+FROM alpine AS builder
+
+ENV QEMU_URL https://github.com/multiarch/qemu-user-static/releases/download/v5.1.0-5/x86_64_qemu-aarch64-static.tar.gz
+RUN apk add curl && curl -L ${QEMU_URL} | tar zxvf - -C . --strip-components 1
+
+FROM alpine:latest
+
+COPY --from=builder qemu-aarch64-static /usr/bin/
+
+RUN apk --no-cache add bash vsftpd
+
+COPY entrypoint.sh /bin/entrypoint.sh
+
+EXPOSE 21
+
+ENTRYPOINT ["/bin/entrypoint.sh"]

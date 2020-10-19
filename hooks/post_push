@@ -1,0 +1,3 @@
+#!/bin/bash
+
+./manifest-tool push from-spec multi-arch-manifest.yml --ignore-missing
